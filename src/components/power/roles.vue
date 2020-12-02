@@ -17,7 +17,7 @@
       <!-- 角色列表区域 -->
       <el-table :data="rolelist" border stripe>
         <!-- 展开列 -->
-        <el-table-column type="expand">
+        <el-table-column type="expand" label="展开">
           <template slot-scope="scope">
             <el-row
               :class="['bdbottom', i1 === 0 ? 'bdtop' : '', 'vcenter']"
@@ -132,6 +132,7 @@ export default {
         return this.$message.error("获取角色列表失败");
       }
       this.rolelist = res.data;
+      console.log(this.rolelist);
     },
     // 根据 ID 删除对应的权限
     async removeRightById(role, rightId) {
@@ -163,6 +164,8 @@ export default {
     // 展示分配权限的对话框
     async showSetRightDialog(role) {
       // 存储角色 ID，修改角色权限接口会用到
+      console.log(role);
+
       this.roleId = role.id;
       // 获取所有权限的数据
       const { data: res } = await this.$http.get("rights/tree");
@@ -211,7 +214,7 @@ export default {
 };
 </script>
 
-<style lang="less" scope>
+<style lang="less" scoped>
 .el-tag {
   margin: 7px;
 }
