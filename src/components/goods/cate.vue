@@ -18,6 +18,7 @@
         :data="catelist"
         :columns="columns"
         :selection-type="false"
+        :expand-type="false"
         show-index
         index-text="#"
         border
